@@ -1,0 +1,309 @@
+MySQL Commande :
+
+
+Introduction à la ORDER BY clause MySQL
+
+Cette ORDER BYclause trie le jeu de résultats par les
+valeurs dans l'valeur1 ordre croissant :
+
+ORDER BY valeur1 ASC;
+
+Et cette ORDER BYclause trie le jeu de résultats 
+par les valeurs dans l' column1ordre décroissant :
+
+ORDER BY column1 DESC;
+
+Voici la syntaxe de la ORDER BY clause :
+
+SELECT 
+    valeur1 
+FROM 
+    database 
+ORDER BY 
+    column1 DESC
+________________________________________________________________________
+
+Introduction à la WHERE clause MySQL
+
+La WHEREclause vous permet de spécifier une condition de 
+recherche pour les lignes renvoyées par une requête. 
+
+Voici la syntaxe de la WHERE clause :
+
+SELECT 
+    lastname, 
+    firstname, 
+    jobtitle
+FROM
+    employees
+WHERE
+    jobtitle = 'Sales Rep';
+
+____________________________________________________________________________
+Introduction à la clause MySQL DISTINCT
+
+Lorsque vous interrogez les données d'une table, vous pouvez
+obtenir des lignes en double. Pour supprimer ces lignes en 
+double, vous utilisez la DISTINCT clause dans l' SELECT 
+instruction.
+
+Voici la syntaxe de la DISTINCT clause :
+
+SELECT 
+    DISTINCT lastname
+FROM
+    employees
+ORDER BY 
+    lastname;
+_________________________________________________________________________
+
+Introduction à l'opérateur MySQL AND
+
+MySQL n'a pas de type booléen intégré. Au lieu de cela, il utilise le 
+nombre zéro comme FALSE et les valeurs non nulles comme TRUE.
+
+L'AND opérateur est un opérateur logique qui combine deux ou plusieurs 
+expressions booléennes et renvoie 1, 0 ou NULL :
+
+
+SELECT 
+    customername, 
+    country, 
+    state
+FROM
+    customers
+WHERE
+    country = 'USA' AND 
+    state = 'CA';
+
+_____________________________________________________________________________
+Introduction à l'opérateur MySQL OR
+
+L'opérateur MySQL OR est un opérateur logique qui combine deux 
+expressions booléennes .
+
+SELECT    
+     customername, 
+      country
+FROM    
+     customers
+WHERE 
+    country = 'USA' OR 
+    country = 'France';
+_____________________________________________________________________________
+
+Introduction à l'opérateur MySQL IN
+
+L'IN opérateur vous permet de déterminer si une valeur correspond à 
+une valeur dans une liste de valeurs. Voici la syntaxe de l' IN 
+opérateur :
+
+SELECT 
+    officeCode, 
+    city, 
+    phone, 
+    country
+FROM
+    offices
+WHERE
+    country IN ('USA' , 'France');
+
+___________________________________________________________________________
+
+Introduction à l'opérateur MySQL NOT IN
+
+L'NOT opérateur nie l'IN opérateur :
+
+SELECT 
+    officeCode, 
+    city, 
+    phone
+FROM
+    offices
+WHERE
+    country NOT IN ('USA' , 'France')
+ORDER BY 
+    city;
+_________________________________________________________________________
+
+Introduction à l'opérateur MySQL BETWEEN
+
+L' BETWEEN opérateur est un opérateur logique qui spécifie si une valeur
+ est dans une plage ou non. Voici la syntaxe de l' BETWEEN opérateur :
+
+SELECT 
+    productCode, 
+    productName, 
+    buyPrice
+FROM
+    products
+WHERE
+    buyPrice BETWEEN 90 AND 100;
+
+_________________________________________________________________________
+
+Introduction à l'opérateur MySQL LIKE
+
+L'LIKE opérateur est un opérateur logique qui teste si une chaîne 
+contient ou non un modèle spécifié.
+
+MySQL fournit deux caractères génériques pour construire des modèles : pourcentage %et trait de soulignement _.
+
+-Le caractère générique de pourcentage ( %) correspond à n'importe 
+quelle chaîne de zéro caractère ou plus.
+
+-Le caractère générique de soulignement ( _) correspond à n'importe 
+quel caractère unique.
+
+Voici la syntaxe de l' LIKE opérateur :
+
+SELECT 
+    employeeNumber, 
+    lastName, 
+    firstName
+FROM
+    employees
+WHERE
+    firstName LIKE 'a%';
+
+	ET
+
+SELECT 
+    employeeNumber, 
+    lastName, 
+    firstName
+FROM
+    employees
+WHERE
+    firstname LIKE 'T_m';
+
+______________________________________________________________________________
+
+Introduction à la clause MySQL LIMIT
+
+La LIMIT clause est utilisée dans l' SELECT instruction pour limiter le 
+nombre de lignes à renvoyer. La LIMIT clause accepte un ou deux arguments. 
+Les valeurs des deux arguments doivent être zéro ou des entiers 
+positifs .
+
+L'exemple suivant illustre la LIMIT syntaxe de la clause avec deux 
+arguments :
+
+SELECT 
+    customerNumber, 
+    customerName, 
+    creditLimit
+FROM
+    customers
+ORDER BY creditLimit DESC
+LIMIT 5;
+
+__________________________________________________________________________
+
+
+Introduction à l'opérateur MySQL IS NULL
+
+Pour tester si une valeur est NULL ou non, vous utilisez l'IS NULL 
+opérateur. Voici la syntaxe de base de l' IS NULL opérateur :
+
+SELECT 
+    customerName, 
+    country, 
+    salesrepemployeenumber
+FROM
+    customers
+WHERE
+    salesrepemployeenumber IS NULL
+ORDER BY 
+    customerName; 
+
+	ET
+
+SELECT 
+    customerName, 
+    country, 
+    salesrepemployeenumber
+FROM
+    customers
+WHERE
+    salesrepemployeenumber IS NOT NULL
+ORDER BY 
+   customerName;
+_________________________________________________________________________
+
+Introduction à la INNER JOINclause MySQL
+
+Le INNER JOIN fait correspondre chaque ligne d'une table avec chaque 
+ligne d'autres tables et vous permet d'interroger les lignes contenant 
+des colonnes des deux tables.
+
+INNER JOIN est une clause facultative de l' instruction SELECT. Il 
+apparaît immédiatement après la FROM clause. 
+
+Voici la syntaxe de la INNER JOIN clause :
+
+SELECT 
+    productCode, 
+    productName, 
+    textDescription
+FROM
+    products t1
+INNER JOIN 
+    productlines t2 ON 
+    t1.productline = t2.productline;
+
+__________________________________________________________________________
+Introduction à la clause MySQL GROUP BY
+
+La GROUP BY clause regroupe un ensemble de lignes dans un ensemble de 
+lignes récapitulatives par valeurs de colonnes ou d'expressions. La 
+GROUP BY clause renvoie une ligne pour chaque groupe. En d'autres 
+termes, cela réduit le nombre de lignes dans le jeu de résultats.
+
+La GROUP BY clause est une clause facultative de l' SELECT instruction.
+
+Pour obtenir le montant total de toutes les commandes par statut, vous 
+joignez le orders tableau au orderdetails tableau et utilisez la SUM 
+fonction pour calculer le montant total.
+ 
+Voici une illustration de la GROUP BY syntaxe de la clause :
+
+SELECT 
+    status, 
+    SUM(quantityOrdered * priceEach) AS amount
+FROM
+    orders
+INNER JOIN orderdetails 
+    USING (orderNumber)
+GROUP BY 
+    status;
+__________________________________________________________________________
+
+Introduction à la clause MySQL HAVING
+
+La HAVING clause est utilisée dans l' SELECT instruction pour spécifier 
+des conditions de filtre pour un groupe de lignes ou d'agrégats.
+
+La HAVING clause est souvent utilisée avec la GROUP BY clause pour 
+filtrer les groupes en fonction d'une condition spécifiée. Si vous 
+omettez la GROUP BY clause, la HAVINGclause se comporte comme la WHERE 
+clause.
+
+Voici une illustration de la syntaxe de la HAVING clause :
+
+SELECT 
+    a.ordernumber, 
+    status, 
+    SUM(priceeach*quantityOrdered) total
+FROM
+    orderdetails a
+INNER JOIN orders b 
+    ON b.ordernumber = a.ordernumber
+GROUP BY  
+    ordernumber, 
+    status
+HAVING 
+    status = 'Shipped' AND 
+    total > 1500;
+
+

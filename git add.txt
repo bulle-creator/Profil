@@ -1,0 +1,50 @@
+ Ajouter un repository/ Reupload
+--------------------------------
+git init
+git add .
+git commit -m "Frist commit"
+git remote add origin 'URL'
+git remote -v
+git push origin master
+       or
+git push -u origin main
+
+If problem
+------------
+git remote rm origin
+git remote rm upstream
+
+Start PHP
+------------------------
+php -S localhost:8000
+___________________________________________
+Hash mot de passe
+
+INSERT INTO tableName (name, address, email, password) 
+VALUES ('aa','bb',''cc,PASSWORD('abcde12345'))
+
+SELECT *
+FROM   tableName
+WHERE `password` = PASSWORD('abcde12345')
+
+Résultat:
+abcde12345 => *20B30AFAF441808B50273EDA287132EC25B02DE2
+________________________________
+identation VsCode
+
+Aide
+Affichage code
+Reindenter
+_______________________________
+
+Commande Visual Studio Code:
+
+npm install --save mongoose
+node.js Prompt
+
+nodemon
+mongod cmd 
+
+si nodemon ne marche pas 
+node ./bin/www"
+
